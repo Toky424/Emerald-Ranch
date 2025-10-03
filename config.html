@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Créer votre mot de passe - Emerald Ranch</title>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
+  <h1>Création de votre mot de passe</h1>
+  <p>Bienvenue ! Complétez votre compte en choisissant un mot de passe.</p>
+  <form id="set-password-form">
+    <input type="password" id="password" placeholder="Mot de passe" required />
+    <button type="submit">Valider</button>
+  </form>
+
+  <script>
+    netlifyIdentity.init();
+
+    // Récupère le token d'invitation depuis l'URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get('token'); // netlify envoie token via query param
+
+    const form = document.getElementById("set-password-form");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const password = document.getElementById("password").value;
+
+      try {
+        // Confirme le token et définit le mot de passe
+        const user = await netlifyIdentity.confirm(token, password);
+        alert("Mot de passe créé ! Vous êtes connecté.");
+        window.location.href = "/admin.html"; // redirection vers l’admin
+      } catch (err) {
+        console.error(err);
+        alert("Erreur lors de la création du mot de passe");
+      }
+    });
+  </script>
+</body>
+</html>
