@@ -1,0 +1,37 @@
+backend:
+  name: git-gateway   # Utilise Netlify Identity + Git Gateway
+  branch: main        # Branche sur laquelle les modifications seront poussées
+
+media_folder: "images/uploads"  # Où stocker les images uploadées
+public_folder: "/images/uploads"
+
+collections:
+  - name: "chevaux"
+    label: "Chevaux"
+    folder: "content/chevaux"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Nom", name: "nom", widget: "string"}
+      - {label: "Race", name: "race", widget: "string"}
+      - {label: "Prix", name: "prix", widget: "number"}
+      - {label: "Image", name: "image", widget: "image"}
+
+  - name: "legumes"
+    label: "Légumes"
+    folder: "content/legumes"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Nom", name: "nom", widget: "string"}
+      - {label: "Prix", name: "prix", widget: "number"}
+      - {label: "Image", name: "image", widget: "image"}
+
+  - name: "actus"
+    label: "Actualités"
+    folder: "content/actus"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Titre", name: "titre", widget: "string"}
+      - {label: "Contenu", name: "contenu", widget: "text"}
