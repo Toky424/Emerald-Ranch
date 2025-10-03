@@ -1,7 +1,7 @@
 backend:
   name: auth0
-  auth0_domain: "VOTRE_DOMAINE.auth0.com"
-  auth0_client_id: "VOTRE_CLIENT_ID"
+  auth0_domain: "dev-ko2v3nq7vuzwes4u.us.auth0.com"
+  auth0_client_id: "2xVAKz1NDbPUsZtx8sixgDbn3WxsMKpw"
 
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
