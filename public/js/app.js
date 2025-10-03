@@ -1,14 +1,12 @@
 let auth0Client = null;
 
-const fetchAuthConfig = () => fetch("/auth_config.json");
+// Configure directement Auth0
 const configureClient = async () => {
-  const response = await fetchAuthConfig();
-  const config = await response.json();
-auth0Client = await auth0.createAuth0Client({
-    domain: config.domain,
-    client_id: config.client_id,
+  auth0Client = await auth0.createAuth0Client({
+    domain: "dev-ko2v3nq7vuzwes4u.us.auth0.com",
+    client_id: "2xVAKz1NDbPUsZtx8sixgDbn3WxsMKpw",
     cacheLocation: "localstorage"
-});
+  });
 };
 
 const updateUI = async () => {
@@ -24,11 +22,11 @@ const updateUI = async () => {
 };
 
 const login = async () => {
-  await auth0Client.loginWithRedirect({ redirect_uri: window.location.origin });
+  await auth0Client.loginWithRedirect({ redirect_uri: window.location.origin + "/admin/" });
 };
 
 const logout = () => {
-  auth0Client.logout({ logoutParams: { returnTo: window.location.origin } });
+  auth0Client.logout({ logoutParams: { returnTo: window.location.origin + "/admin/" } });
 };
 
 window.onload = async () => {
@@ -37,7 +35,7 @@ window.onload = async () => {
   const query = window.location.search;
   if (query.includes("code=") && query.includes("state=")) {
     await auth0Client.handleRedirectCallback();
-    window.history.replaceState({}, document.title, "/");
+    window.history.replaceState({}, document.title, "/admin/");
   }
 
   updateUI();
