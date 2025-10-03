@@ -1,8 +1,8 @@
 backend:
-  name: git-gateway   # Utilise Netlify Identity + Git Gateway
-  branch: main        # Branche sur laquelle les modifications seront poussées
+  name: git-gateway
+  branch: main
 
-media_folder: "images/uploads"  # Où stocker les images uploadées
+media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
 collections:
