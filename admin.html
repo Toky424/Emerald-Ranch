@@ -11,8 +11,34 @@
 
   <!-- Netlify Identity Widget -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <button id="login-button">Se connecter</button>
 
   <!-- Netlify CMS -->
   <script src="https://unpkg.com/netlify-cms@^2.15.0/dist/netlify-cms.js"></script>
+
+  <script>
+    // Initialisation Identity
+    const identity = netlifyIdentity.init();
+
+    const loginButton = document.getElementById("login-button");
+
+    loginButton.addEventListener("click", () => {
+      netlifyIdentity.open(); // ouvre le widget
+    });
+
+    // Affiche la connexion ou la déconnexion selon l'état
+    netlifyIdentity.on("login", user => {
+      console.log("Connecté :", user);
+      loginButton.textContent = "Déconnexion";
+      loginButton.onclick = () => netlifyIdentity.logout();
+      window.location.reload(); // recharge pour accéder à Netlify CMS
+    });
+
+    netlifyIdentity.on("logout", () => {
+      console.log("Déconnecté");
+      loginButton.textContent = "Se connecter";
+      loginButton.onclick = () => netlifyIdentity.open();
+    });
+  </script>
 </body>
 </html>
