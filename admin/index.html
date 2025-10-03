@@ -12,7 +12,14 @@
   <script src="https://unpkg.com/decap-cms@^2.0.0/dist/decap-cms.min.js"></script>
   <script>
     DecapCMS.init({
-      config: '/admin/config.yml'
+      config: '/admin/config.yml',
+      auth: {
+        // Backend Auth0
+        name: 'auth0',
+        domain: 'VOTRE_DOMAINE.auth0.com', // à remplacer par ton domaine Auth0
+        client_id: 'VOTRE_CLIENT_ID',      // à remplacer par ton client ID Auth0
+        redirect_uri: window.location.origin + '/admin/'
+      }
     });
   </script>
 </body>
