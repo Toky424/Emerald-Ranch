@@ -4,17 +4,17 @@
   <meta charset="UTF-8">
   <title>Admin - Emerald Ranch</title>
   <link rel="stylesheet" href="css/style.css">
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
   <h1>Interface Employés Emerald Ranch</h1>
   <p>Connecte-toi pour gérer le catalogue et les actualités.</p>
 
-  <button id="login-btn">Se connecter</button>
-  <button id="logout-btn" style="display:none;">Se déconnecter</button>
+  <button id="login-btn">Connexion</button>
+  <button id="logout-btn" style="display:none">Déconnexion</button>
 
-  <div id="gated-content" style="display:none;">
-    <p>Contenu réservé aux employés (CMS, ajout/modification d'éléments)</p>
+  <div id="cms" style="display:none">
+    <p>Gestion du contenu (chevaux, légumes, actualités) via Netlify CMS</p>
+    <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
   </div>
 
   <script src="js/app.js"></script>
